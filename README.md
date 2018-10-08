@@ -1,5 +1,5 @@
 A tiny docker image with a working [tectonic latex
-engine](https://tectonic-typesetting.github.io/en-US/index.html) and [biber] (https://github.com/plk/biblatex) with a primed cache.
+engine](https://tectonic-typesetting.github.io/en-US/index.html) and [biber](https://github.com/plk/biblatex) with a primed cache.
 
 ```
 docker pull dxjoke/tectonic-docker
