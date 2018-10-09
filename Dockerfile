@@ -11,6 +11,7 @@ RUN chmod +x biber
 RUN cp biber /usr/bin/biber
 
 COPY *.tex ./
+COPY *.bib ./
 # first run - keep files for biber
 RUN tectonic --keep-intermediates --reruns 0 main.tex
 RUN biber main
