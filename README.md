@@ -28,7 +28,8 @@ pdf:
 ```
 
 # Example: Travis CI
-Create a `.travis.yml` file with, assuming the main tex file to be `src/main.tex`,
+Create a `.travis.yml` file with, assuming the main tex file to be `main.tex`.
+If your `main.tex` file is in a subfolder (for example src/main.tex), adjust the second line to src=$TRAVIS_BUILD_DIR/mysubfolder (eg src=$TRAVIS_BUILD_DIR/src)
 
 ```yaml
 sudo: required
