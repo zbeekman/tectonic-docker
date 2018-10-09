@@ -28,7 +28,8 @@ pdf:
 ```
 
 # Example: Travis CI
-Create a `.travis.yml` file with, assuming the main tex file to be `src/main.tex`,
+Create a `.travis.yml` file with, assuming the main tex file to be `main.tex`.
+If your `main.tex` file is in a subfolder (for example src/main.tex), adjust the second line to src=$TRAVIS_BUILD_DIR/mysubfolder (eg src=$TRAVIS_BUILD_DIR/src)
 
 ```yaml
 sudo: required
@@ -46,4 +47,12 @@ script:
 
 After building tectonic, it is run on the tex files in this repo to
 download all the common files from the tectonic bundle. These files are bundled in the docker image
+
+# Running the image locally
+On windows
+`docker run -it -v c:/mytex/folder/thesis:/data dxjoke/tectonic-docker`
+On linux
+`docker run -it -v /home/user/mytex/folder/thesis:/data dxjoke/tectonic-docker`
+
+Then you can cd into /data and run tectonic/biber as you wish.
 
