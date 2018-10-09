@@ -20,8 +20,8 @@ pdf:
   image: dxjoke/tectonic-docker
   script:
     - tectonic --keep-intermediates --reruns 0 my-document.tex
-	- biber my-document
-	- tectonic my-document.tex
+    - biber my-document
+    - tectonic my-document.tex
   artifacts:
     paths:
       - my-document.pdf
@@ -37,7 +37,6 @@ services:
   - docker
 
 script:
- # We use the docker image from https://hub.docker.com/r/rekka/tectonic/
  - docker pull dxjoke/tectonic-docker
  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind dxjoke/tectonic-docker
   /bin/sh -c "tectonic --keep-intermediates --reruns 0 main.tex; biber main; tectonic main.tex"
