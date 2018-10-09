@@ -1,6 +1,12 @@
+# Docker Tectonic with Biber
 A tiny docker image with a working [tectonic latex
 engine](https://tectonic-typesetting.github.io/en-US/index.html) and [biber](https://github.com/plk/biblatex) with a primed cache.
 
+* Visit my page on docker hub at: https://hub.docker.com/r/dxjoke/tectonic-docker/
+* Visit my page on github at: https://github.com/WtfJoke/tectonic-docker
+
+
+## Getting the image
 ```
 docker pull dxjoke/tectonic-docker
 ```
@@ -43,12 +49,12 @@ script:
   /bin/sh -c "tectonic --keep-intermediates --reruns 0 main.tex; biber main; tectonic main.tex"
 ```
 
-# Priming the cache
+### Priming the cache
 
 After building tectonic, it is run on the tex files in this repo to
 download all the common files from the tectonic bundle. These files are bundled in the docker image
 
-# Running the image locally
+## Running locally
 On windows
 `docker run -it -v c:/mytex/folder/thesis:/data dxjoke/tectonic-docker`
 On linux
