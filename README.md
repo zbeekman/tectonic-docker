@@ -11,7 +11,7 @@ engine](https://tectonic-typesetting.github.io/en-US/index.html) and [biber](htt
 docker pull dxjoke/tectonic-docker
 ```
 
-Only **~70MB** compressed.
+Only **~75MB** compressed.
 
 A fully working latex engine. Packages that are not in the cache will be
 downloaded on demand.
@@ -25,12 +25,25 @@ pdf builds.
 pdf:
   image: dxjoke/tectonic-docker
   script:
-    - tectonic --keep-intermediates --reruns 0 my-document.tex
-    - biber my-document
-    - tectonic my-document.tex
+    - tectonic --keep-intermediates --reruns 0 main.tex
+    - biber main
+    - tectonic main.tex
   artifacts:
     paths:
-      - my-document.pdf
+      - main.pdf
+```
+
+## Example: Gitlab CI (without biber)
+In case you dont need biber, you simply ommit the first two script calls. Eg.
+
+```yaml
+pdf:
+  image: dxjoke/tectonic-docker
+  script:
+    - tectonic main.tex
+  artifacts:
+    paths:
+      - main.pdf
 ```
 
 # Example: Travis CI
@@ -44,9 +57,21 @@ services:
   - docker
 
 script:
- - docker pull dxjoke/tectonic-docker
  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind dxjoke/tectonic-docker
   /bin/sh -c "tectonic --keep-intermediates --reruns 0 main.tex; biber main; tectonic main.tex"
+```
+
+## Example: Travis CI (without biber)
+In case you dont need biber, you simply use this config with a slightly adjusted docker run:
+```yaml
+sudo: required
+
+services:
+  - docker
+
+script:
+ - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind dxjoke/tectonic-docker
+  /bin/sh -c "tectonic main.tex"
 ```
 
 ### Priming the cache
@@ -63,5 +88,12 @@ On linux:
 
 `docker run -it -v /home/user/mytex/folder/thesis:/data dxjoke/tectonic-docker`
 
-Then you can cd into /data and run tectonic/biber as you wish.
+Afterwards you can cd into /data and run tectonic/biber as you wish.
+Eg:
+```
+cd /data
+tectonic --keep-intermediates --reruns 0 main.tex
+biber main
+tectonic main.tex
+```
 
