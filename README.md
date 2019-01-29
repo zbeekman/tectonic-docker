@@ -1,4 +1,5 @@
-# Docker Tectonic with Biber
+![docker pulls](https://img.shields.io/docker/pulls/dxjoke/tectonic-docker.svg)
+# Docker Tectonic with Biber 
 A tiny docker image with a working [tectonic latex
 engine](https://tectonic-typesetting.github.io/en-US/index.html) and [biber](https://github.com/plk/biblatex) with a primed cache.
 
