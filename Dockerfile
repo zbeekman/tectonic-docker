@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y libfontconfig1-dev libgraphite2-dev lib
 RUN cargo install tectonic --force --vers 0.1.11
 
 WORKDIR /usr/src/tex
-RUN wget 'https://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/2.11/binaries/Linux/biber-linux_x86_64.tar.gz'
+RUN wget 'https://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/2.14/binaries/Linux/biber-linux_x86_64.tar.gz'
 RUN tar -xvzf biber-linux_x86_64.tar.gz
 RUN chmod +x biber
 RUN cp biber /usr/bin/biber
