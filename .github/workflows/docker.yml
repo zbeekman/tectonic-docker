@@ -27,4 +27,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            dxjoke/tectonic-docker:0.1.12-biber
+            dxjoke/tectonic-docker:latest-biber
