@@ -19,6 +19,8 @@ RUN for f in *.tex; do tectonic $f; done
 
 
 FROM alpine:latest
+# Install runtime dependencies, alternative use # RUN apk add harfbuzz-dev 
+RUN apk add harfbuzz libstdc++ fontconfig icu-libs harfbuzz-icu
 # copy tectonic binary to new image
 COPY --from=builder /usr/bin/tectonic /usr/bin/
 # reuse tectonic cache from compiling tex files
