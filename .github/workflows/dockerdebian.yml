@@ -1,15 +1,14 @@
-name: Docker Build
+name: Docker Build (Debian)
 
 on:
   push:
-    branches: testMatrix
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tectonic: ["latest", "0.3.1", "0.3.0", "0.1.17", "0.1.12", "0.1.11"]
+        tectonic: ["0.3.1", "0.2.0", "0.1.17"]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -22,7 +21,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build docker image of tectonic-${{ matrix.tectonic }} and push
+      - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
